@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">168</string>
+
+    <string-array name="adBlockDiv">
+        <item>top</item>
+        <item>clear</item>
+        <item>t1</item>
+        <item>boundary3</item>
+        <item>fenjie2</item>
+    </string-array>
+</resources>

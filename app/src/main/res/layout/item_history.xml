@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="2019-01-01"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tv_issue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="001期"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm1"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pmsx1"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm2"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pmsx2"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm3"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pmsx3"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm4"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pmsx4"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm5"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pmsx5"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pm6"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pmsx6"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tm"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:background="@drawable/oval_red"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tmsx"
+                android:layout_width="@dimen/textview_width"
+                android:layout_height="@dimen/textview_width"
+                android:gravity="center"
+                android:text="龙"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textview_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+</LinearLayout>
