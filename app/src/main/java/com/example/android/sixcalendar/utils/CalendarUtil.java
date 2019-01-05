@@ -25,15 +25,7 @@ public class CalendarUtil {
     public static String getAnimal(int code) {
         Date date = new Date();
         long[] nongli = ChinaDate.calElement(date.getYear() + 1900, date.getMonth() + 1, date.getDate());
-        // 农历 1996 年是 鼠年
-        int indexCurAnimal = ((int) nongli[0] - 1996) % 12; // 当前的生肖
-        int indexCodeAnimal = code % 12; // 计算号码的最小值
-        int finalIndex = 0;
-        if (indexCodeAnimal > indexCurAnimal) {
-            finalIndex = 12 - indexCodeAnimal;
-        } else {
-            finalIndex = indexCurAnimal - (indexCodeAnimal - 1);
-        }
+        int finalIndex = (((int)nongli[0] -4) % 12 + 60 - (code - 1)) % 12;
         return Animals[finalIndex];
     }
 
