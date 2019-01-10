@@ -17,6 +17,7 @@ import org.kymjs.kjframe.http.HttpCallBack;
 public class LastSixMarkReqeust extends BaseReqeust {
 
     public static void getLastSixMark(Context context, final BaseResponse response) {
+        if (!isNetworkConnected(context)) return;
         KJHttp kjHttp = new KJHttp();
         ShowProgressDialog.showDialog(context, null, null);
         kjHttp.get("http://lddata1.vipsinaapp.com/r.php", new HttpCallBack() {
@@ -24,11 +25,6 @@ public class LastSixMarkReqeust extends BaseReqeust {
             public void onSuccess(String t) {
                 super.onSuccess(t);
                 Log.d(TAG, "onSuccess t " + t);
-                /*String lastStr = MySharePreferece.getInstance().getString(MySharePreferece.LAST_SIXMARK, "");
-                if (lastStr.equalsIgnoreCase(t)) {
-                    Log.e("LastSixMarkReqeust", "请求结果和最后一次请求结果一致，不处理!");
-                    return;
-                }*/
                 MySharePreferece.getInstance().putString(MySharePreferece.LAST_SIXMARK, t);
                 LastSixMark lastSixMark = new LastSixMark(t);
                 Log.d(TAG, lastSixMark.toString());

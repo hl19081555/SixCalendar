@@ -13,6 +13,7 @@ public class LastSixMark {
     private String mYear, mIssue, mSPM1, mSPM2, mSPM3, mSPM4, mSPM5, mSPM6, mSTM;
     private int mIPM1, mIPM2, mIPM3, mIPM4, mIPM5, mIPM6, mITM;
     private int[] cc = new int[]{4, 6, 2, 7, 3, 8, 1, 9, 5};
+    private boolean isIntact = false; // 是否完整
 
     public LastSixMark(String lastInfo) {
         mLastInfo = lastInfo; // 1|14|32|47|2018|23|147|16|2|41 // 32,16,47,02,14,41, 23
@@ -33,8 +34,9 @@ public class LastSixMark {
                     mSPM6 = String.format("%02d", mIPM6);
                 }
                 if (!TextUtils.isEmpty(split[cc[8]])) {
-                    mITM  = Integer.parseInt(split[cc[8]]);
-                    mSTM  = String.format("%02d", mITM );
+                    mITM = Integer.parseInt(split[cc[8]]);
+                    mSTM = String.format("%02d", mITM);
+                    isIntact = true;
                 }
             case 9:
                 if (!TextUtils.isEmpty(split[cc[5]])) {
@@ -56,7 +58,8 @@ public class LastSixMark {
                 }
             case 7:
                 if (!TextUtils.isEmpty(split[cc[0]])) mYear = split[cc[0]];
-                if (!TextUtils.isEmpty(split[cc[1]])) mIssue = String.format("%03d", Integer.parseInt(split[cc[1]]));
+                if (!TextUtils.isEmpty(split[cc[1]]))
+                    mIssue = String.format("%03d", Integer.parseInt(split[cc[1]]));
                 if (!TextUtils.isEmpty(split[cc[2]])) {
                     mIPM1 = Integer.parseInt(split[cc[2]]);
                     mSPM1 = String.format("%02d", mIPM1);
@@ -143,5 +146,23 @@ public class LastSixMark {
 
     public int getITM() {
         return mITM;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof LastSixMark) {
+            LastSixMark lastSixMark = (LastSixMark) obj;
+            if (!mYear.equals(lastSixMark.getYear()) || !mIssue.equals(lastSixMark.getIssue()))
+                return false;
+            return mIPM1 == lastSixMark.getIPM1() && mIPM2 == lastSixMark.getIPM2() &&
+                    mIPM3 == lastSixMark.getIPM3() && mIPM4 == lastSixMark.getIPM4() &&
+                    mIPM5 == lastSixMark.getIPM5() && mIPM6 == lastSixMark.getIPM6() &&
+                    mITM == lastSixMark.getITM();
+        }
+        return false;
+    }
+
+    public boolean isIntact() {
+        return isIntact;
     }
 }

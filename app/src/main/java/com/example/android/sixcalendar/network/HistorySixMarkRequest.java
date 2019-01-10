@@ -23,6 +23,7 @@ import java.util.List;
 public class HistorySixMarkRequest extends BaseReqeust {
 
     public static void getHistoryListInfo(Context context, int year, final BaseResponse response) {
+        if (!isNetworkConnected(context)) return;
         Log.e("HistorySixMarkRequest", "getHistoryListInfo : year " + year);
         ShowProgressDialog.showDialog(context, "当前加载年份：" + year, null);
         KJHttp kjHttp = new KJHttp();

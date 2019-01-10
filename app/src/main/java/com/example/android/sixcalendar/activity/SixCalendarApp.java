@@ -3,6 +3,8 @@ package com.example.android.sixcalendar.activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.android.sixcalendar.libbaidu.BaiduAudioManager;
+
 public class SixCalendarApp extends Application {
     private static Context sInstance;
 
@@ -10,9 +12,22 @@ public class SixCalendarApp extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        BaiduAudioManager.getInstance();
     }
 
     public static Context getAppContext() {
         return sInstance;
+    }
+
+    @Override
+    public void onTerminate() {
+        BaiduAudioManager.getInstance().release();
+        super.onTerminate();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        BaiduAudioManager.getInstance().stop();
+        super.onTrimMemory(level);
     }
 }

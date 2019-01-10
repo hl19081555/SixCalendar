@@ -14,6 +14,7 @@ import com.example.android.sixcalendar.R;
 import com.example.android.sixcalendar.database.SixMarkManager;
 import com.example.android.sixcalendar.entries.HistorySixMark;
 import com.example.android.sixcalendar.entries.LastSixMark;
+import com.example.android.sixcalendar.libbaidu.BaiduAudioManager;
 import com.example.android.sixcalendar.network.BaseResponse;
 import com.example.android.sixcalendar.network.LastSixMarkReqeust;
 import com.example.android.sixcalendar.utils.CalendarUtil;
@@ -61,6 +62,10 @@ public class LastSixMarkActivity extends BaseActivity {
     @BindView(id = R.id.tmsx)
     private TextView mTMSX;
 
+    private LastSixMark mLastSixMark;
+
+    private boolean isPlayAudio = false;
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -75,6 +80,7 @@ public class LastSixMarkActivity extends BaseActivity {
 
     @Override
     public void setRootView() {
+        super.setRootView();
         setContentView(R.layout.activity_last);
     }
 
@@ -92,7 +98,6 @@ public class LastSixMarkActivity extends BaseActivity {
         Log.d(TAG, "initData : last = " + last);
         if (!TextUtils.isEmpty(last)) {
             showData(new LastSixMark(last));
-            mHandler.removeMessages(ContractUtil.MSG_WHAT_GET_LAST_INFO);
             mHandler.sendEmptyMessageDelayed(ContractUtil.MSG_WHAT_GET_LAST_INFO, 3000);
         } else {
             mHandler.sendEmptyMessage(ContractUtil.MSG_WHAT_GET_LAST_INFO);
@@ -127,22 +132,21 @@ public class LastSixMarkActivity extends BaseActivity {
         @Override
         public void onSuccess(LastSixMark data) {
             Log.d(TAG, data.toString());
-            if (data == null) return;
-            showData(data);
-            if (data.getITM() >= 1 && data.getITM() <= 49 &&
-                    MySharePreferece.getInstance().getString(MySharePreferece.LAST_SIXMARK_YEAR, "").equals(data.getYear()) &&
-                    MySharePreferece.getInstance().getString(MySharePreferece.LAST_SIXMARK_ISSUE, "").equals(data.getIssue())) {
-                MySharePreferece.getInstance().putString(MySharePreferece.LAST_SIXMARK_YEAR, data.getYear());
-                MySharePreferece.getInstance().putString(MySharePreferece.LAST_SIXMARK_ISSUE, data.getIssue());
-                HistorySixMark item = new HistorySixMark();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                item.setPreDrawDate(simpleDateFormat.format(new Date()));
-                item.setIssue(data.getIssue());
-                item.setPreDrawCode(data.getSPM1() + "," + data.getSPM2() + "," + data.getSPM3() + "," + data.getSPM4() +
-                        "," + data.getSPM5() + ", " + data.getSPM6() + "," + data.getSTM());
-                item.setColor(CalendarUtil.getBoDuanStr(data.getSPM1(), data.getSPM2(), data.getSPM3(), data.getSPM4(),
-                        data.getSPM5(), data.getSPM6(), data.getSTM()));
-                SixMarkManager.getInstance().insertHistorySixMark(item);
+            if (data != null || !mLastSixMark.equals(data)) {
+                mLastSixMark = data;
+                playAudio(data);
+                showData(data);
+                if (data.getITM() >= 1 && data.getITM() <= 49) {
+                    HistorySixMark item = new HistorySixMark();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    item.setPreDrawDate(simpleDateFormat.format(new Date()));
+                    item.setIssue(data.getIssue());
+                    item.setPreDrawCode(data.getSPM1() + "," + data.getSPM2() + "," + data.getSPM3() + "," + data.getSPM4() +
+                            "," + data.getSPM5() + "," + data.getSPM6() + "," + data.getSTM());
+                    item.setColor(CalendarUtil.getBoDuanStr(data.getSPM1(), data.getSPM2(), data.getSPM3(), data.getSPM4(),
+                            data.getSPM5(), data.getSPM6(), data.getSTM()));
+                    SixMarkManager.getInstance().insertHistorySixMark(item);
+                }
             }
             mHandler.removeMessages(ContractUtil.MSG_WHAT_GET_LAST_INFO);
             mHandler.sendEmptyMessageDelayed(ContractUtil.MSG_WHAT_GET_LAST_INFO, 3000);
@@ -194,5 +198,43 @@ public class LastSixMarkActivity extends BaseActivity {
         showInfo(data.getIPM5(), data.getSPM5(), mPM5, mPMSX5);
         showInfo(data.getIPM6(), data.getSPM6(), mPM6, mPMSX6);
         showInfo(data.getITM(), data.getSTM(), mTM, mTMSX);
+    }
+
+    private void playAudio(LastSixMark data) {
+        // 如果当前状态非播放，并且数据不完整，则开启播放功能
+        if (!isPlayAudio && !data.isIntact()) {
+            isPlayAudio = true;
+        }
+        // 如果当前状态是播放的，那么就开始播放最后一个内容
+        if (isPlayAudio) {
+            // 播放声音
+            if (checkValue(data.getITM(), true)) {
+            } else if (checkValue(data.getIPM6(), false)) {
+            } else if (checkValue(data.getIPM5(), false)) {
+            } else if (checkValue(data.getIPM4(), false)) {
+            } else if (checkValue(data.getIPM3(), false)) {
+            } else if (checkValue(data.getIPM2(), false)) {
+            } else if (checkValue(data.getIPM1(), false)) {
+            }
+        }
+        // 上诉都处理后，判断当前是否是完整的，如果是就关闭播放
+        if (isPlayAudio && data.isIntact()) {
+            isPlayAudio = false;
+        }
+    }
+
+    private boolean checkValue(int value, boolean isTM) {
+        if (value >= 1 && value <= 49) {
+            // 播放，并返回true
+            String str;
+            if (isTM) {
+                str = ("特码  " + value + "  " + CalendarUtil.getAnimal(value));
+            } else {
+                str = ("平码  " + value + "  " + CalendarUtil.getAnimal(value));
+            }
+            BaiduAudioManager.getInstance().speak(str);
+            return true;
+        }
+        return false;
     }
 }

@@ -14,6 +14,7 @@ public class ShowProgressDialog {
     private static ProgressDialog mProgressDialog;
 
     public static final void showDialog(Context context, String msg, final OnCancleListener onCancleListener) {
+        if (context == null) return;
         mProgressDialog = new ProgressDialog(context);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);// 设置进度条的形式为圆形转动的进度条
         mProgressDialog.setCancelable(true);// 设置是否可以通过点击Back键取消
