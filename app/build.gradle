@@ -34,4 +34,5 @@ dependencies {
     // implementation 'org.jsoup:jsoup:1.11.3'
     implementation files('libs/jsoup-1.11.3.jar')
     implementation files('libs/gson-2.8.2.jar')
+    implementation files('libs/bugly_crash_release.jar')
 }
