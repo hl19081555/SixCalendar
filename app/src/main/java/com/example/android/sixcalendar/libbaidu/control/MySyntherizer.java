@@ -80,7 +80,7 @@ public class MySyntherizer implements MainHandlerConstant {
         }
         setParams(config.getParams());
         // 初始化tts
-        int result = mSpeechSynthesizer.initTts(config.getTtsMode());
+        int result = mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.initTts(config.getTtsMode());
         if (result != 0) {
             sendToUiThread("【error】initTts 初始化失败 + errorCode：" + result);
             return false;
@@ -98,7 +98,7 @@ public class MySyntherizer implements MainHandlerConstant {
      */
     public int speak(String text) {
         Log.i(TAG, "speak text:" + text);
-        return mSpeechSynthesizer.speak(text);
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.speak(text);
     }
 
     /**
@@ -109,7 +109,7 @@ public class MySyntherizer implements MainHandlerConstant {
      * @return
      */
     public int speak(String text, String utteranceId) {
-        return mSpeechSynthesizer.speak(text, utteranceId);
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.speak(text, utteranceId);
     }
 
     /**
@@ -119,11 +119,11 @@ public class MySyntherizer implements MainHandlerConstant {
      * @return
      */
     public int synthesize(String text) {
-        return mSpeechSynthesizer.synthesize(text);
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.synthesize(text);
     }
 
     public int synthesize(String text, String utteranceId) {
-        return mSpeechSynthesizer.synthesize(text, utteranceId);
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.synthesize(text, utteranceId);
     }
 
     public int batchSpeak(List<Pair<String, String>> texts) {
@@ -136,11 +136,11 @@ public class MySyntherizer implements MainHandlerConstant {
             }
             bags.add(speechSynthesizeBag);
         }
-        return mSpeechSynthesizer.batchSpeak(bags);
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.batchSpeak(bags);
     }
 
     public void setParams(Map<String, String> params) {
-        if (params != null) {
+        if (params != null && mSpeechSynthesizer != null) {
             for (Map.Entry<String, String> e : params.entrySet()) {
                 mSpeechSynthesizer.setParam(e.getKey(), e.getValue());
             }
@@ -148,15 +148,15 @@ public class MySyntherizer implements MainHandlerConstant {
     }
 
     public int pause() {
-        return mSpeechSynthesizer.pause();
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.pause();
     }
 
     public int resume() {
-        return mSpeechSynthesizer.resume();
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.resume();
     }
 
     public int stop() {
-        return mSpeechSynthesizer.stop();
+        return mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.stop();
     }
 
     /**
@@ -166,7 +166,7 @@ public class MySyntherizer implements MainHandlerConstant {
      * @return
      */
     public int loadModel(String modelFilename, String textFilename) {
-        int res  = mSpeechSynthesizer.loadModel(modelFilename, textFilename);
+        int res = mSpeechSynthesizer == null ? -1 : mSpeechSynthesizer.loadModel(modelFilename, textFilename);
         sendToUiThread("切换离线发音人成功。");
         return res;
     }
@@ -179,12 +179,16 @@ public class MySyntherizer implements MainHandlerConstant {
      * @param rightVolume [0-1] 默认1.0f
      */
     public void setStereoVolume(float leftVolume, float rightVolume) {
-        mSpeechSynthesizer.setStereoVolume(leftVolume, rightVolume);
+        if (mSpeechSynthesizer != null) {
+            mSpeechSynthesizer.setStereoVolume(leftVolume, rightVolume);
+        }
     }
 
     public void release() {
-        mSpeechSynthesizer.stop();
-        mSpeechSynthesizer.release();
+        if (mSpeechSynthesizer != null) {
+            mSpeechSynthesizer.stop();
+            mSpeechSynthesizer.release();
+        }
         mSpeechSynthesizer = null;
         isInitied = false;
     }

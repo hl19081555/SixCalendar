@@ -24,10 +24,4 @@ public class SixCalendarApp extends Application {
         BaiduAudioManager.getInstance().release();
         super.onTerminate();
     }
-
-    @Override
-    public void onTrimMemory(int level) {
-        BaiduAudioManager.getInstance().stop();
-        super.onTrimMemory(level);
-    }
 }
