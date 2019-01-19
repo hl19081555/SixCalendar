@@ -3,4 +3,7 @@
 
     <dimen name="textview_size">22sp</dimen>
     <dimen name="textview_width">36dp</dimen>
+
+    <dimen name="textview_size_m">28sp</dimen>
+    <dimen name="textview_width_m">40dp</dimen>
 </resources>

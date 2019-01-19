@@ -28,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="8dp"
-                android:text="2018年001期"
+                android:text="2018年168期"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/textview_size"
+                android:textSize="@dimen/textview_size_m"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -49,23 +49,21 @@
 
                 <TextView
                     android:id="@+id/pm1"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pmsx1"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -77,23 +75,21 @@
 
                 <TextView
                     android:id="@+id/pm2"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pmsx2"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -105,23 +101,21 @@
 
                 <TextView
                     android:id="@+id/pm3"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pmsx3"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -133,23 +127,21 @@
 
                 <TextView
                     android:id="@+id/pm4"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pmsx4"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -161,23 +153,21 @@
 
                 <TextView
                     android:id="@+id/pm5"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pmsx5"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -189,23 +179,21 @@
 
                 <TextView
                     android:id="@+id/pm6"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/pmsx6"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -216,12 +204,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
                     android:text="+"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -233,23 +221,21 @@
 
                 <TextView
                     android:id="@+id/tm"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:background="@drawable/oval_red"
                     android:gravity="center"
-                    android:text="49"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tmsx"
-                    android:layout_width="@dimen/textview_width"
-                    android:layout_height="@dimen/textview_width"
+                    android:layout_width="@dimen/textview_width_m"
+                    android:layout_height="@dimen/textview_width_m"
                     android:gravity="center"
-                    android:text="龙"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textview_size"
+                    android:textSize="@dimen/textview_size_m"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>

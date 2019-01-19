@@ -65,7 +65,7 @@ public class SixMarkManager {
                     String tm = cursor.getString(cursor.getColumnIndex(SixMarkContract.COLUMN_TM));
                     item.setPreDrawCode(pm1 + "," + pm2 + "," + pm3 + "," + pm4 + "," + pm5 + "," + pm6 + "," + tm);
                     list.add(item);
-                    Log.e("SixMarkManager", "item = " + item);
+                    // Log.e("SixMarkManager", "item = " + item);
                 } while (cursor.moveToNext());
             } else {
                 Log.e("SixMarkManager", "getHistorySixMark cursor no data");
@@ -152,6 +152,16 @@ public class SixMarkManager {
         c.put(SixMarkContract.COLUMN_PMSX6, item.getPMSX6());
         c.put(SixMarkContract.COLUMN_TMSX, item.getTMSX());
         return c;
+    }
+
+    public int clearData() {
+        SQLiteDatabase fSD = mDB.getWritableDatabase();
+        if (fSD == null) {
+            new Throwable(new SQLException());
+        }
+        int count = fSD.delete(SixMarkContract.TABLE_SIX_MARK, null, null);
+        Log.d("SixMarkManager", "clearData : count = " + count);
+        return count;
     }
 
     public int deleteLastTwoYear(int year) {

@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="001期"
+                android:text="168期"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold"
                 android:textColor="@android:color/black" />
@@ -48,7 +48,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -58,7 +57,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -76,7 +74,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -86,7 +83,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -104,7 +100,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -114,7 +109,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -132,7 +126,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -142,7 +135,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -160,7 +152,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -170,7 +161,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -188,7 +178,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -198,7 +187,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -232,7 +220,6 @@
                 android:layout_height="@dimen/textview_width"
                 android:background="@drawable/oval_red"
                 android:gravity="center"
-                android:text="49"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />
@@ -242,7 +229,6 @@
                 android:layout_width="@dimen/textview_width"
                 android:layout_height="@dimen/textview_width"
                 android:gravity="center"
-                android:text="龙"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textview_size"
                 android:textStyle="bold" />

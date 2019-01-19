@@ -148,18 +148,14 @@ public class LastSixMark {
         return mITM;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof LastSixMark) {
-            LastSixMark lastSixMark = (LastSixMark) obj;
-            if (!mYear.equals(lastSixMark.getYear()) || !mIssue.equals(lastSixMark.getIssue()))
-                return false;
-            return mIPM1 == lastSixMark.getIPM1() && mIPM2 == lastSixMark.getIPM2() &&
-                    mIPM3 == lastSixMark.getIPM3() && mIPM4 == lastSixMark.getIPM4() &&
-                    mIPM5 == lastSixMark.getIPM5() && mIPM6 == lastSixMark.getIPM6() &&
-                    mITM == lastSixMark.getITM();
-        }
-        return false;
+    public boolean equals(LastSixMark lastSixMark) {
+        if (lastSixMark == null) return false;
+        if (!mYear.equals(lastSixMark.getYear()) || !mIssue.equals(lastSixMark.getIssue()))
+            return false;
+        return mIPM1 == lastSixMark.getIPM1() && mIPM2 == lastSixMark.getIPM2() &&
+                mIPM3 == lastSixMark.getIPM3() && mIPM4 == lastSixMark.getIPM4() &&
+                mIPM5 == lastSixMark.getIPM5() && mIPM6 == lastSixMark.getIPM6() &&
+                mITM == lastSixMark.getITM();
     }
 
     public boolean isIntact() {

@@ -97,7 +97,8 @@ public class LastSixMarkActivity extends BaseActivity {
         String last = MySharePreferece.getInstance().getString(MySharePreferece.LAST_SIXMARK, "");
         Log.d(TAG, "initData : last = " + last);
         if (!TextUtils.isEmpty(last)) {
-            showData(new LastSixMark(last));
+            mLastSixMark = new LastSixMark(last);
+            showData(mLastSixMark);
             mHandler.sendEmptyMessageDelayed(ContractUtil.MSG_WHAT_GET_LAST_INFO, 3000);
         } else {
             mHandler.sendEmptyMessage(ContractUtil.MSG_WHAT_GET_LAST_INFO);
@@ -132,7 +133,9 @@ public class LastSixMarkActivity extends BaseActivity {
         @Override
         public void onSuccess(LastSixMark data) {
             Log.d(TAG, data.toString());
-            if (data != null || !mLastSixMark.equals(data)) {
+            if (mLastSixMark != null)
+                Log.d(TAG, "mLastSixMark = " + mLastSixMark);
+            if (data != null && !data.equals(mLastSixMark)) {
                 mLastSixMark = data;
                 playAudio(data);
                 showData(data);

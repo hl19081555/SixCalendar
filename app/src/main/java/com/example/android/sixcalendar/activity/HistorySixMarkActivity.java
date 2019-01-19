@@ -121,6 +121,7 @@ public class HistorySixMarkActivity extends BaseActivity {
         super.initData();
         isFirstInit = MySharePreferece.getInstance().getBoolean(MySharePreferece.IS_FIRST, true);
         if (isFirstInit || !loadMoreDate()) {
+            SixMarkManager.getInstance().clearData(); // 第一次加载时，删除所有旧数据
             Date date = new Date();
             mYear = date.getYear() + 1900;
             HistorySixMarkRequest.getHistoryListInfo(this, mYear, mHistorySixMarkBaseResponse);
