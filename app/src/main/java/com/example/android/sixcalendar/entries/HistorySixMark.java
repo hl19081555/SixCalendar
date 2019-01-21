@@ -32,7 +32,7 @@ public class HistorySixMark {
 
     public void setPreDrawCode(String preDrawCode) {
         this.preDrawCode = preDrawCode;
-        Log.d("HistorySixMark", "preDrawCode = " + preDrawCode);
+        // Log.d("HistorySixMark", "preDrawCode = " + preDrawCode);
         if (TextUtils.isEmpty(preDrawCode)) return;
         String[] temp = preDrawCode.split(",");
         if (temp == null || temp.length != 7) return;

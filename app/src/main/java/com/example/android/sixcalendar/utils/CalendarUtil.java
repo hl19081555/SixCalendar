@@ -1,5 +1,7 @@
 package com.example.android.sixcalendar.utils;
 
+import android.text.TextUtils;
+
 import com.example.android.sixcalendar.R;
 
 import java.text.ParseException;
@@ -36,7 +38,9 @@ public class CalendarUtil {
     public enum ENUM_BODUAN {NULL, RED, GREEN, BLUE}
 
     public static ENUM_BODUAN getBoDuan(String code) {
-        if (BODUAN_RED.contains(code)) {
+        if (TextUtils.isEmpty(code)) {
+            return ENUM_BODUAN.RED;
+        } else if (BODUAN_RED.contains(code)) {
             return ENUM_BODUAN.RED;
         } else if (BODUAN_BLUE.contains(code)) {
             return ENUM_BODUAN.BLUE;

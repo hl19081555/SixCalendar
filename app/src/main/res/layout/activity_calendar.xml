@@ -65,7 +65,8 @@
                     android:gravity="center"
                     android:text="向前10天"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_pre_five"
@@ -80,20 +81,19 @@
                     android:gravity="center"
                     android:text="向前05天"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_pre_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rect_yellow"
+                    android:background="@mipmap/left_circle"
                     android:gravity="center"
-                    android:text="向前01天"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -160,7 +160,8 @@
                     android:gravity="center"
                     android:text="向后10天"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_next_five"
@@ -175,20 +176,19 @@
                     android:gravity="center"
                     android:text="向后05天"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_next_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rect_yellow"
+                    android:background="@mipmap/right_circle"
                     android:gravity="center"
-                    android:text="向后01天"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </LinearLayout>

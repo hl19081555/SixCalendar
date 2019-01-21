@@ -42,7 +42,7 @@ public class HistorySixMarkActivity extends BaseActivity {
     private boolean isFirstInit = false;
     private boolean isGetLastTwo = false;
 
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -126,6 +126,17 @@ public class HistorySixMarkActivity extends BaseActivity {
             mYear = date.getYear() + 1900;
             HistorySixMarkRequest.getHistoryListInfo(this, mYear, mHistorySixMarkBaseResponse);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        HistorySixMarkRequest.cancle();
+        if (mHandler != null) {
+            mHandler.removeMessages(ContractUtil.MSG_WHAT_GET_HISTORY_NEXT);
+            mHandler.removeMessages(ContractUtil.MSG_WHAT_GET_HISTORY_AGAIN);
+            mHandler.removeMessages(ContractUtil.MSG_WHAT_GET_HISTORY_LAST_TWO);
+        }
+        super.onDestroy();
     }
 
     @Override

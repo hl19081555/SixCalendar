@@ -34,7 +34,7 @@ public class HistorySixMarkRequest extends BaseReqeust {
             @Override
             public void onSuccess(String t) {
                 super.onSuccess(t);
-                Log.e("jackie", t);
+                //Log.e("jackie", t);
                 if (response != null) {
                     response.onSuccess(parsing(t));
                 }
@@ -59,6 +59,7 @@ public class HistorySixMarkRequest extends BaseReqeust {
     public static void cancle() {
         KJHttp kjHttp = new KJHttp();
         kjHttp.cancelAll();
+        kjHttp.cancleAll();
     }
 
     private static List<HistorySixMark> parsing(String info) {
@@ -78,7 +79,7 @@ public class HistorySixMarkRequest extends BaseReqeust {
                         historySixMark.setColor(item.optString("color"));
                         historySixMark.setPreDrawCode(item.optString("preDrawCode"));
                         historySixMark.setIssue(String.format("%03d", item.optInt("issue")));
-                        Log.e(TAG, "historySixMark " + historySixMark);
+                        // Log.e(TAG, "historySixMark " + historySixMark);
                         list.add(historySixMark);
                     }
                 }

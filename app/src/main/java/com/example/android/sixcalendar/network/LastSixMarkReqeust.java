@@ -24,7 +24,7 @@ public class LastSixMarkReqeust extends BaseReqeust {
             @Override
             public void onSuccess(String t) {
                 super.onSuccess(t);
-                Log.d(TAG, "onSuccess t " + t);
+                // Log.d(TAG, "onSuccess t " + t);
                 MySharePreferece.getInstance().putString(MySharePreferece.LAST_SIXMARK, t);
                 LastSixMark lastSixMark = new LastSixMark(t);
                 Log.d(TAG, lastSixMark.toString());
@@ -36,7 +36,7 @@ public class LastSixMarkReqeust extends BaseReqeust {
             @Override
             public void onFailure(int errorNo, String strMsg) {
                 super.onFailure(errorNo, strMsg);
-                Log.d(TAG, "onFailure errorNo " + errorNo + " strMsg " + strMsg);
+                // Log.d(TAG, "onFailure errorNo " + errorNo + " strMsg " + strMsg);
                 if (response != null) {
                     response.onFailure(errorNo, strMsg);
                 }
@@ -45,7 +45,7 @@ public class LastSixMarkReqeust extends BaseReqeust {
             @Override
             public void onFinish() {
                 super.onFinish();
-                Log.d(TAG, "onFinish");
+                // Log.d(TAG, "onFinish");
                 ShowProgressDialog.hideDialog();
             }
         });

@@ -133,8 +133,8 @@ public class LastSixMarkActivity extends BaseActivity {
         @Override
         public void onSuccess(LastSixMark data) {
             Log.d(TAG, data.toString());
-            if (mLastSixMark != null)
-                Log.d(TAG, "mLastSixMark = " + mLastSixMark);
+            /*if (mLastSixMark != null)
+                Log.d(TAG, "mLastSixMark = " + mLastSixMark);*/
             if (data != null && !data.equals(mLastSixMark)) {
                 mLastSixMark = data;
                 playAudio(data);

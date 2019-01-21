@@ -21,6 +21,7 @@ import com.example.android.sixcalendar.utils.ContractUtil;
 import com.example.android.sixcalendar.utils.MySharePreferece;
 import com.example.android.sixcalendar.view.ShowProgressDialog;
 import com.google.gson.Gson;
+import com.tencent.bugly.beta.Beta;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -128,6 +129,7 @@ public class CalendarActivity extends BaseActivity {
                 }
             }).start();
         }
+        Beta.checkUpgrade();
     }
 
     @Override
