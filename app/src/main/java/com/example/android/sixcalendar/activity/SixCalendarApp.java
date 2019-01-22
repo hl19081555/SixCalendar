@@ -82,6 +82,6 @@ public class SixCalendarApp extends Application {
         Beta.defaultBannerId = R.mipmap.ic_launcher; // 设置更新弹窗默认展示的banner，defaultBannerId为项目中的图片资源Id; 当后台配置的banner拉取失败时显示此banner，默认不设置则展示“loading“;
         Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS); // 设置sd卡的Download为更新资源保存目录; 后续更新资源会保存在此目录，需要在manifest中添加WRITE_EXTERNAL_STORAGE权限;
         Beta.showInterruptedStrategy = false; // 点击过确认的弹窗在APP下次启动自动检查更新时会再次显示;
-        Beta.canShowUpgradeActs.add(MainActivity.class); // 只允许在MainActivity上显示更新弹窗，其他activity上不显示弹窗;不设置会默认所有activity都可以显示弹窗;
+        // Beta.canShowUpgradeActs.add(CalendarActivity.class); // 只允许在MainActivity上显示更新弹窗，其他activity上不显示弹窗;不设置会默认所有activity都可以显示弹窗;
     }
 }
