@@ -2,6 +2,7 @@ package com.example.android.sixcalendar.network;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.example.android.sixcalendar.entries.LastSixMark;
 import com.example.android.sixcalendar.utils.MySharePreferece;
@@ -19,7 +20,6 @@ public class LastSixMarkReqeust extends BaseReqeust {
     public static void getLastSixMark(Context context, final BaseResponse response) {
         if (!isNetworkConnected(context)) return;
         KJHttp kjHttp = new KJHttp();
-        ShowProgressDialog.showDialog(context, null, null);
         kjHttp.get("http://lddata1.vipsinaapp.com/r.php", new HttpCallBack() {
             @Override
             public void onSuccess(String t) {
@@ -46,7 +46,6 @@ public class LastSixMarkReqeust extends BaseReqeust {
             public void onFinish() {
                 super.onFinish();
                 // Log.d(TAG, "onFinish");
-                ShowProgressDialog.hideDialog();
             }
         });
     }
