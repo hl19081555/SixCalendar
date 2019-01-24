@@ -71,8 +71,7 @@ public class LastSixMark {
     @Override
     public String toString() {
         return "LastSixMark{" +
-                "LastInfo='" + mLastInfo + '\'' +
-                ", Year='" + mYear + '\'' +
+                "Year='" + mYear + '\'' +
                 ", Issue='" + mIssue + '\'' +
                 ", PM1='" + mSPM1 + '\'' +
                 ", PM2='" + mSPM2 + '\'' +
@@ -81,6 +80,7 @@ public class LastSixMark {
                 ", PM5='" + mSPM5 + '\'' +
                 ", PM6='" + mSPM6 + '\'' +
                 ", TM='" + mSTM + '\'' +
+                ", LastInfo='" + mLastInfo + '\'' +
                 '}';
     }
 
@@ -150,9 +150,8 @@ public class LastSixMark {
 
     public boolean equals(LastSixMark lastSixMark) {
         if (lastSixMark == null) return false;
-        if (!mYear.equals(lastSixMark.getYear()) || !mIssue.equals(lastSixMark.getIssue()))
-            return false;
-        return mIPM1 == lastSixMark.getIPM1() && mIPM2 == lastSixMark.getIPM2() &&
+        return mYear.equals(lastSixMark.getYear()) && mIssue.equals(lastSixMark.getIssue()) &&
+                mIPM1 == lastSixMark.getIPM1() && mIPM2 == lastSixMark.getIPM2() &&
                 mIPM3 == lastSixMark.getIPM3() && mIPM4 == lastSixMark.getIPM4() &&
                 mIPM5 == lastSixMark.getIPM5() && mIPM6 == lastSixMark.getIPM6() &&
                 mITM == lastSixMark.getITM();

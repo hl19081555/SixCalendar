@@ -1,5 +1,8 @@
 package com.example.android.sixcalendar.entries;
 
+import com.example.android.sixcalendar.utils.CalendarUtil;
+import com.example.android.sixcalendar.utils.ChinaDate;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -72,6 +75,10 @@ public class LotteryDate {
     public boolean isCurDay() {
         Date date = new Date();
         return (year == date.getYear() + 1900) && (month == date.getMonth() + 1) && (day == date.getDate());
+    }
+
+    public String getLunarMonth() {
+        return ChinaDate.getLunarMonth(year, month, day);
     }
 
     @Override

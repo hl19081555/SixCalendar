@@ -1,5 +1,7 @@
 package com.example.android.sixcalendar.utils;
 
+import android.text.TextUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -300,6 +302,17 @@ public class ChinaDate {
             return sToday.toString();
         } finally {
             sToday = null;
+        }
+    }
+
+    public static String getLunarMonth(int year, int month, int day) {
+        Calendar today = Calendar.getInstance(Locale.SIMPLIFIED_CHINESE);
+        long[] l = calElement(year, month, day);
+        String date = getChinaDate((int) (l[2]));
+        if (!TextUtils.isEmpty(date) && "初一".equals(date)) {
+            return nStr1[(int) l[1]] + "月";
+        } else {
+            return date;
         }
     }
 

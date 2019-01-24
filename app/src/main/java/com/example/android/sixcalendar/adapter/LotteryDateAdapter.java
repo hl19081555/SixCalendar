@@ -56,6 +56,7 @@ public class LotteryDateAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.text = convertView.findViewById(R.id.tv_day);
             holder.layout_item = convertView.findViewById(R.id.layout_item);
+            holder.lunar = convertView.findViewById(R.id.tv_lunar);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -64,6 +65,7 @@ public class LotteryDateAdapter extends BaseAdapter {
             holder.text.setText(getWeekName(position));
             holder.text.setTextColor(mContext.getResources().getColor(R.color.black));
             holder.text.setBackgroundResource(R.drawable.oval_white);
+            holder.lunar.setVisibility(View.GONE);
         } else {
             LotteryDate item = listValue.get(position - 7);
             if (item != null) {
@@ -81,10 +83,13 @@ public class LotteryDateAdapter extends BaseAdapter {
                         holder.text.setTextColor(mContext.getResources().getColor(R.color.black));
                         holder.text.setBackgroundResource(R.drawable.oval_white);
                     }
+                    holder.lunar.setVisibility(View.VISIBLE);
+                    holder.lunar.setText(item.getLunarMonth());
                 } else {
                     holder.text.setText("");
                     holder.text.setTextColor(mContext.getResources().getColor(R.color.black));
                     holder.text.setBackgroundResource(R.drawable.oval_white);
+                    holder.lunar.setVisibility(View.INVISIBLE);
                 }
                 if (item.isCurDay()) {
                     holder.layout_item.setBackgroundResource(R.drawable.rect_yellow);
@@ -120,5 +125,6 @@ public class LotteryDateAdapter extends BaseAdapter {
     class ViewHolder {
         TextView text;
         View layout_item;
+        TextView lunar;
     }
 }

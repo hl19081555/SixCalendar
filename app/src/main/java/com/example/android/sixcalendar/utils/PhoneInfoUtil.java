@@ -12,6 +12,7 @@ import com.example.android.sixcalendar.activity.SixCalendarApp;
  */
 
 public class PhoneInfoUtil {
+    private static int mVersionCode = -1;
 
     public static String getHandSetInfo() {
         String handSetInfo = "手机型号:" + android.os.Build.MODEL +
@@ -35,5 +36,18 @@ public class PhoneInfoUtil {
             e.printStackTrace();
         }
         return versionName;
+    }
+
+    //获取当前版本号
+    public static int getAppVersionCode(Context context) {
+        if (mVersionCode != -1) return mVersionCode;
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo("com.example.android.sixcalendar", 0);
+            mVersionCode = packageInfo.versionCode;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mVersionCode;
     }
 }

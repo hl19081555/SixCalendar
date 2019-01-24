@@ -26,7 +26,9 @@ import com.example.android.sixcalendar.network.LastSixMarkReqeust;
 import com.example.android.sixcalendar.network.QueryLotteryDateRequest;
 import com.example.android.sixcalendar.utils.CalendarUtil;
 import com.example.android.sixcalendar.utils.ContractUtil;
+import com.example.android.sixcalendar.utils.FileUtils;
 import com.example.android.sixcalendar.utils.MySharePreferece;
+import com.example.android.sixcalendar.utils.PhoneInfoUtil;
 
 import org.kymjs.kjframe.ui.BindView;
 
@@ -126,10 +128,8 @@ public class LastSixMarkActivity extends BaseActivity {
         if (!TextUtils.isEmpty(last)) {
             mLastSixMark = new LastSixMark(last);
             showData(mLastSixMark);
-            mHandler.sendEmptyMessageDelayed(ContractUtil.MSG_WHAT_GET_LAST_INFO, 3000);
-        } else {
-            mHandler.sendEmptyMessage(ContractUtil.MSG_WHAT_GET_LAST_INFO);
         }
+        mHandler.sendEmptyMessage(ContractUtil.MSG_WHAT_GET_LAST_INFO);
         // 请求开奖日期数据
         Date date = new Date();
         year = date.getYear() + 1900;
@@ -161,16 +161,20 @@ public class LastSixMarkActivity extends BaseActivity {
         return true;
     }
 
+    private SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private BaseResponse<LastSixMark> mLastSixMarkBaseResponse = new BaseResponse<LastSixMark>() {
         @Override
         public void onSuccess(LastSixMark data) {
-            Log.d(TAG, data.toString());
-            /*if (mLastSixMark != null)
-                Log.d(TAG, "mLastSixMark = " + mLastSixMark);*/
+            if (PhoneInfoUtil.getAppVersionCode(LastSixMarkActivity.this) == 19 &&
+                    FileUtils.isSDCardMounted()) {
+                FileUtils.createFile(FileUtils.LOG_FILE);
+                String log = mSimpleDateFormat.format(new Date()) + "\r\npreData = " + mLastSixMark + "\r\n curData = " + data + "\r\n\r\n";
+                FileUtils.writeFile(log, FileUtils.LOG_FILE, true);
+            }
+            showData(data);
             if (data != null && !data.equals(mLastSixMark)) {
                 mLastSixMark = data;
                 playAudio(data);
-                showData(data);
                 if (data.getITM() >= 1 && data.getITM() <= 49) {
                     HistorySixMark item = new HistorySixMark();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -225,6 +229,7 @@ public class LastSixMarkActivity extends BaseActivity {
     }
 
     private void showData(LastSixMark data) {
+        if (data == null) return;
         if (!TextUtils.isEmpty(data.getYear()) && !TextUtils.isEmpty(data.getIssue())) {
             mTVIssue.setText(data.getYear() + "年" + data.getIssue() + "期");
         } else {
