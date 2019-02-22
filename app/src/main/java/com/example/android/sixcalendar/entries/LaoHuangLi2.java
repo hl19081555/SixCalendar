@@ -5,22 +5,22 @@ package com.example.android.sixcalendar.entries;
  */
 
 public class LaoHuangLi2 {
-    private String nongli;
-    private String lunar;
-    private String year;
-    private String date;
-    private String week;
-    private String yi;
-    private String ji;
-    private String chong;
-    private String baiji;
+    private String nongli = "";
+    private String lunar= "";
+    private String year= "";
+    private String date= "";
+    private String week= "";
+    private String yi= "";
+    private String ji= "";
+    private String chong= "";
+    private String baiji= "";
 
-    private String pre10;
-    private String pre05;
-    private String pre01;
-    private String next10;
-    private String next05;
-    private String next01;
+    private String pre10= "";
+    private String pre05= "";
+    private String pre01= "";
+    private String next10= "";
+    private String next05= "";
+    private String next01= "";
 
     public String getNongli() {
         return nongli;

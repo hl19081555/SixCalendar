@@ -27,7 +27,7 @@ public class LaoHuangLiRequest extends BaseReqeust {
 
         KJHttp kjHttp = new KJHttp();
 
-        kjHttp.get(url, new HttpCallBack() {
+        kjHttp.get(url, null, false, new HttpCallBack() {
             @Override
             public void onSuccess(byte[] t) {
                 super.onSuccess(t);

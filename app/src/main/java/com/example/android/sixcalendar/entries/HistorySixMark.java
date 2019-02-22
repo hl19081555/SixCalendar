@@ -17,6 +17,7 @@ public class HistorySixMark {
     //*******************************************************
     private String mPM1, mPM2, mPM3, mPM4, mPM5, mPM6, mTM;
     private String mPMSX1, mPMSX2, mPMSX3, mPMSX4, mPMSX5, mPMSX6, mTMSX;
+    private int year, month, day;
 
     public String getPreDrawDate() {
         return preDrawDate;
@@ -24,6 +25,20 @@ public class HistorySixMark {
 
     public void setPreDrawDate(String preDrawDate) {
         this.preDrawDate = preDrawDate;
+        /**Log.e("jakcie", "preDrawDate = " + preDrawDate);
+        try {
+            if (!TextUtils.isEmpty(preDrawDate)) {
+                String[] sp = preDrawDate.split("-");
+                if (sp != null && sp.length == 3) {
+                    this.year = Integer.parseInt(sp[0]);
+                    this.month = Integer.parseInt(sp[1]);
+                    this.day = Integer.parseInt(sp[2]);
+                }
+            }
+        } catch (Exception e) {
+            Log.e(HistorySixMark.class.getSimpleName(), e.toString());
+        }
+        Log.e("jakcie", "year = " + year + ", month = " + month + ", day = " + day);*/
     }
 
     public String getPreDrawCode() {
@@ -52,13 +67,23 @@ public class HistorySixMark {
         mPM6 = String.format("%02d", pm6);
         mTM  = String.format("%02d", tm );
 
-        mPMSX1 = CalendarUtil.getAnimal(pm1);
-        mPMSX2 = CalendarUtil.getAnimal(pm2);
-        mPMSX3 = CalendarUtil.getAnimal(pm3);
-        mPMSX4 = CalendarUtil.getAnimal(pm4);
-        mPMSX5 = CalendarUtil.getAnimal(pm5);
-        mPMSX6 = CalendarUtil.getAnimal(pm6);
-        mTMSX  = CalendarUtil.getAnimal(tm );
+        if (year == 0) {
+            mPMSX1 = CalendarUtil.getAnimal(pm1);
+            mPMSX2 = CalendarUtil.getAnimal(pm2);
+            mPMSX3 = CalendarUtil.getAnimal(pm3);
+            mPMSX4 = CalendarUtil.getAnimal(pm4);
+            mPMSX5 = CalendarUtil.getAnimal(pm5);
+            mPMSX6 = CalendarUtil.getAnimal(pm6);
+            mTMSX = CalendarUtil.getAnimal(tm);
+        } else {
+            mPMSX1 = CalendarUtil.getAnimal(year, month, day, pm1);
+            mPMSX2 = CalendarUtil.getAnimal(year, month, day, pm2);
+            mPMSX3 = CalendarUtil.getAnimal(year, month, day, pm3);
+            mPMSX4 = CalendarUtil.getAnimal(year, month, day, pm4);
+            mPMSX5 = CalendarUtil.getAnimal(year, month, day, pm5);
+            mPMSX6 = CalendarUtil.getAnimal(year, month, day, pm6);
+            mTMSX = CalendarUtil.getAnimal(year, month, day, tm);
+        }
     }
 
     public String getIssue() {

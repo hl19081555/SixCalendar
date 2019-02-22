@@ -17,6 +17,7 @@ public class MySharePreferece {
     public static final String LAST_SIXMARK_ISSUE = "lastSixMarkIssue";
     public static final String CALENDAR_EXISTS = "calendarExists";
     public static final String CALENDAR_LAST_INFO = "calendarLastInfo";
+    public static final String LOTTERY_DATE = "lotteryDate";
 
     private MySharePreferece() {
         sp = SixCalendarApp.getAppContext().getSharedPreferences(sName, Context.MODE_PRIVATE);

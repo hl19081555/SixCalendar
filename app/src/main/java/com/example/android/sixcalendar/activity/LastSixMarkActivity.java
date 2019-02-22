@@ -29,6 +29,8 @@ import com.example.android.sixcalendar.utils.ContractUtil;
 import com.example.android.sixcalendar.utils.FileUtils;
 import com.example.android.sixcalendar.utils.MySharePreferece;
 import com.example.android.sixcalendar.utils.PhoneInfoUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.kymjs.kjframe.ui.BindView;
 
@@ -130,6 +132,19 @@ public class LastSixMarkActivity extends BaseActivity {
             showData(mLastSixMark);
         }
         mHandler.sendEmptyMessage(ContractUtil.MSG_WHAT_GET_LAST_INFO);
+        String ldate = MySharePreferece.getInstance().getString(MySharePreferece.LOTTERY_DATE, "");
+        if (!TextUtils.isEmpty(ldate)) {
+            Gson gson = new Gson();
+            List<LotteryDate> list = gson.fromJson(ldate, new TypeToken<List<LotteryDate>>(){}.getType());
+            if (list != null && list.size() > 0) {
+                LotteryDate l1 = list.get(0);
+                mTVYM.setText(String.format("%04d 年 %02d 月", l1.getYear(), l1.getMonth()));
+                mLotteryDateList.clear();
+                mLotteryDateList.addAll(list);
+                adapter.notifyDataSetChanged();
+                mLayoutItem.setVisibility(View.VISIBLE);
+            }
+        }
         // 请求开奖日期数据
         Date date = new Date();
         year = date.getYear() + 1900;
@@ -171,8 +186,8 @@ public class LastSixMarkActivity extends BaseActivity {
                 String log = mSimpleDateFormat.format(new Date()) + "\r\npreData = " + mLastSixMark + "\r\n curData = " + data + "\r\n\r\n";
                 FileUtils.writeFile(log, FileUtils.LOG_FILE, true);
             }
-            showData(data);
             if (data != null && !data.equals(mLastSixMark)) {
+                showData(data);
                 mLastSixMark = data;
                 playAudio(data);
                 if (data.getITM() >= 1 && data.getITM() <= 49) {
@@ -217,12 +232,37 @@ public class LastSixMarkActivity extends BaseActivity {
                 }
             };
 
-    private void showInfo(int num, String str, TextView tv1, TextView tv2) {
+    private void showInfo(int num, String str, TextView tv1, TextView tv2, int point) {
         if (num >= 1 && num <= 49) {
             tv1.setText(str);
             tv2.setText(CalendarUtil.getAnimal(num));
         } else {
-            tv1.setText("");
+            String aa = "";
+            switch (point) {
+                case 1:
+                    aa = "正";
+                    break;
+                case 2:
+                    aa = "在";
+                    break;
+                case 3:
+                    aa = "加";
+                    break;
+                case 4:
+                    aa = "载";
+                    break;
+                case 5:
+                    aa = "数";
+                    break;
+                case 6:
+                    aa = "据";
+                    break;
+                case 7:
+                    aa = "...";
+                    break;
+
+            }
+            tv1.setText(aa);
             tv2.setText("");
         }
         tv1.setBackgroundResource(CalendarUtil.getBoDuanRID(str));
@@ -236,13 +276,13 @@ public class LastSixMarkActivity extends BaseActivity {
             Date date = new Date();
             mTVIssue.setText(String.valueOf(date.getYear() + 1900));
         }
-        showInfo(data.getIPM1(), data.getSPM1(), mPM1, mPMSX1);
-        showInfo(data.getIPM2(), data.getSPM2(), mPM2, mPMSX2);
-        showInfo(data.getIPM3(), data.getSPM3(), mPM3, mPMSX3);
-        showInfo(data.getIPM4(), data.getSPM4(), mPM4, mPMSX4);
-        showInfo(data.getIPM5(), data.getSPM5(), mPM5, mPMSX5);
-        showInfo(data.getIPM6(), data.getSPM6(), mPM6, mPMSX6);
-        showInfo(data.getITM(), data.getSTM(), mTM, mTMSX);
+        showInfo(data.getIPM1(), data.getSPM1(), mPM1, mPMSX1, 1);
+        showInfo(data.getIPM2(), data.getSPM2(), mPM2, mPMSX2, 2);
+        showInfo(data.getIPM3(), data.getSPM3(), mPM3, mPMSX3, 3);
+        showInfo(data.getIPM4(), data.getSPM4(), mPM4, mPMSX4, 4);
+        showInfo(data.getIPM5(), data.getSPM5(), mPM5, mPMSX5, 5);
+        showInfo(data.getIPM6(), data.getSPM6(), mPM6, mPMSX6, 6);
+        showInfo(data.getITM(), data.getSTM(), mTM, mTMSX, 7);
     }
 
     private void playAudio(LastSixMark data) {
@@ -320,6 +360,9 @@ public class LastSixMarkActivity extends BaseActivity {
         public void onSuccess(List<LotteryDate> data) {
             //Log.e(TAG, data.toString());
             if (data != null && data.size() > 0) {
+                Gson gson = new Gson();
+                String ldate = gson.toJson(data);
+                MySharePreferece.getInstance().putString(MySharePreferece.LOTTERY_DATE, ldate);
                 LotteryDate l1 = data.get(0);
                 mTVYM.setText(String.format("%04d 年 %02d 月", l1.getYear(), l1.getMonth()));
                 mLotteryDateList.clear();

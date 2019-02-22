@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.android.sixcalendar.R;
 import com.example.android.sixcalendar.entries.LaoHuangLi;
 import com.example.android.sixcalendar.entries.LaoHuangLi2;
+import com.example.android.sixcalendar.libbaidu.BaiduAudioManager;
 import com.example.android.sixcalendar.network.BaseResponse;
 import com.example.android.sixcalendar.utils.ContractUtil;
 import com.example.android.sixcalendar.utils.MySharePreferece;
@@ -86,6 +87,7 @@ public class CalendarActivity extends BaseActivity {
 
     @Override
     public void setRootView() {
+        super.setRootView();
         setContentView(R.layout.activity_calendar);
     }
 
@@ -105,6 +107,7 @@ public class CalendarActivity extends BaseActivity {
                 return false;
             }
         });
+        BaiduAudioManager.getInstance();
     }
 
     @Override
@@ -288,13 +291,18 @@ public class CalendarActivity extends BaseActivity {
     }
 
     private void showInfo() {
+        if (mLaohuangli == null) return;
         mTVNongli.setText(mLaohuangli.getNongli());
         mTVLunar.setText(mLaohuangli.getLunar());
         mTVYear.setText(mLaohuangli.getYear());
         mTVDate.setText(mLaohuangli.getDate());
         mTVWeek.setText(mLaohuangli.getWeek());
-        mTVYi.setText(Html.fromHtml(mLaohuangli.getYi()));
-        mTVJi.setText(Html.fromHtml(mLaohuangli.getJi()));
+        if (!TextUtils.isEmpty(mLaohuangli.getYi())) {
+            mTVYi.setText(Html.fromHtml(mLaohuangli.getYi()));
+        }
+        if (!TextUtils.isEmpty(mLaohuangli.getJi())) {
+            mTVJi.setText(Html.fromHtml(mLaohuangli.getJi()));
+        }
         mTVChong.setText(mLaohuangli.getChong() + "\n" + mLaohuangli.getBaiji());
         //mTVChong.setText(Html.fromHtml(mLaohuangli.getChong()));
     }

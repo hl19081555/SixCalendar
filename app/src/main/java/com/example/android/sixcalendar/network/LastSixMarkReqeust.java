@@ -20,33 +20,34 @@ public class LastSixMarkReqeust extends BaseReqeust {
     public static void getLastSixMark(Context context, final BaseResponse response) {
         if (!isNetworkConnected(context)) return;
         KJHttp kjHttp = new KJHttp();
-        kjHttp.get("http://lddata1.vipsinaapp.com/r.php", new HttpCallBack() {
-            @Override
-            public void onSuccess(String t) {
-                super.onSuccess(t);
-                // Log.d(TAG, "onSuccess t " + t);
-                MySharePreferece.getInstance().putString(MySharePreferece.LAST_SIXMARK, t);
-                LastSixMark lastSixMark = new LastSixMark(t);
-                Log.d(TAG, lastSixMark.toString());
-                if (response != null) {
-                    response.onSuccess(lastSixMark);
-                }
-            }
+        kjHttp.get("http://lddata1.vipsinaapp.com/r.php", null, false,
+                new HttpCallBack() {
+                    @Override
+                    public void onSuccess(String t) {
+                        super.onSuccess(t);
+                        // Log.d(TAG, "onSuccess t " + t);
+                        MySharePreferece.getInstance().putString(MySharePreferece.LAST_SIXMARK, t);
+                        LastSixMark lastSixMark = new LastSixMark(t);
+                        Log.d(TAG, lastSixMark.toString());
+                        if (response != null) {
+                            response.onSuccess(lastSixMark);
+                        }
+                    }
 
-            @Override
-            public void onFailure(int errorNo, String strMsg) {
-                super.onFailure(errorNo, strMsg);
-                // Log.d(TAG, "onFailure errorNo " + errorNo + " strMsg " + strMsg);
-                if (response != null) {
-                    response.onFailure(errorNo, strMsg);
-                }
-            }
+                    @Override
+                    public void onFailure(int errorNo, String strMsg) {
+                        super.onFailure(errorNo, strMsg);
+                        // Log.d(TAG, "onFailure errorNo " + errorNo + " strMsg " + strMsg);
+                        if (response != null) {
+                            response.onFailure(errorNo, strMsg);
+                        }
+                    }
 
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                // Log.d(TAG, "onFinish");
-            }
-        });
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        // Log.d(TAG, "onFinish");
+                    }
+                });
     }
 }

@@ -175,4 +175,16 @@ public class SixMarkManager {
         Log.d("SixMarkManager", "deleteLastTwoYear : count = " + count);
         return count;
     }
+
+    public int deleteDataFromYear(String year) {
+        SQLiteDatabase fSD = mDB.getWritableDatabase();
+        if (fSD == null) {
+            new Throwable(new SQLException());
+        }
+        int count = fSD.delete(SixMarkContract.TABLE_SIX_MARK,
+                SixMarkContract.COLUMN_IDAY + " like '" + year + "%' or " +
+                        SixMarkContract.COLUMN_IDAY + " = '" + year + "' ", null);
+        Log.d("SixMarkManager", "deleteDataFromYear : year = " + year + ", count = " + count);
+        return count;
+    }
 }

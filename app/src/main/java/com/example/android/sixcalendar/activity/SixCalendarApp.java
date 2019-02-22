@@ -30,8 +30,6 @@ public class SixCalendarApp extends Application {
         // 版本自动更新
         initBugly();
 
-        BaiduAudioManager.getInstance();
-
         new Thread(new Runnable() {
             @Override
             public void run() {

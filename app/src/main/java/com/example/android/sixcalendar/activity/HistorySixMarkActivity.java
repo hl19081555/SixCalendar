@@ -149,7 +149,11 @@ public class HistorySixMarkActivity extends BaseActivity {
         @Override
         public void onSuccess(List<HistorySixMark> data) {
             Log.d(TAG, "onSuccess call");
-            SixMarkManager.getInstance().bulkInsertHistorySixMark(data);
+            if (data != null && data.size() > 0) {
+                Log.d(TAG, "onSuccess : year = " + data.get(0).getPreDrawDate().substring(0, 4));
+                SixMarkManager.getInstance().deleteDataFromYear(data.get(0).getPreDrawDate().substring(0, 4));
+                SixMarkManager.getInstance().bulkInsertHistorySixMark(data);
+            }
             if (isFirstInit) {
                 mHandler.sendEmptyMessageDelayed(ContractUtil.MSG_WHAT_GET_HISTORY_NEXT, 1000);
             } else if (isGetLastTwo) {
@@ -176,7 +180,7 @@ public class HistorySixMarkActivity extends BaseActivity {
                     isGetLastTwo = true;
                     Date date = new Date();
                     mYear = date.getYear() + 1900;
-                    SixMarkManager.getInstance().deleteLastTwoYear(mYear);
+                    //SixMarkManager.getInstance().deleteLastTwoYear(mYear);
                     HistorySixMarkRequest.getHistoryListInfo(HistorySixMarkActivity.this, mYear, mHistorySixMarkBaseResponse);
                     break;
             }

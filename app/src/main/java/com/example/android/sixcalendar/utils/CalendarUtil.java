@@ -24,11 +24,27 @@ public class CalendarUtil {
     }
 
     // 根据号码计算当前的生肖
+    public static String getAnimal(int year, int month, int day, int code) {
+        long[] nongli = ChinaDate.calElement(year, month, day);
+        int finalIndex = (((int) nongli[0] - 4) % 12 + 60 - (code - 1)) % 12;
+        return Animals[finalIndex];
+    }
+
+    // 根据号码计算当前的生肖
     public static String getAnimal(int code) {
         Date date = new Date();
-        long[] nongli = ChinaDate.calElement(date.getYear() + 1900, date.getMonth() + 1, date.getDate());
-        int finalIndex = (((int)nongli[0] -4) % 12 + 60 - (code - 1)) % 12;
-        return Animals[finalIndex];
+        return getAnimal(date.getYear() + 1900, date.getMonth() + 1, date.getDate(), code);
+    }
+
+    // 根据号码计算当前的生肖
+    public static String getAnimal(int code, String time) {
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(time);
+        } catch (ParseException e) {
+            date = new Date();
+        }
+        return getAnimal(date.getYear() + 1900, date.getMonth() + 1, date.getDate(), code);
     }
 
     private static final String BODUAN_RED = "01.02.07.08.12.13.18.19.23.24.29.30.34.35.40.45.46";
@@ -39,7 +55,7 @@ public class CalendarUtil {
 
     public static ENUM_BODUAN getBoDuan(String code) {
         if (TextUtils.isEmpty(code)) {
-            return ENUM_BODUAN.RED;
+            return ENUM_BODUAN.BLUE;
         } else if (BODUAN_RED.contains(code)) {
             return ENUM_BODUAN.RED;
         } else if (BODUAN_BLUE.contains(code)) {
