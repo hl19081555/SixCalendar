@@ -240,25 +240,25 @@ public class LastSixMarkActivity extends BaseActivity {
             String aa = "";
             switch (point) {
                 case 1:
-                    aa = "正";
+                    aa = getString(R.string.null_of_1);
                     break;
                 case 2:
-                    aa = "在";
+                    aa = getString(R.string.null_of_2);
                     break;
                 case 3:
-                    aa = "加";
+                    aa = getString(R.string.null_of_3);
                     break;
                 case 4:
-                    aa = "载";
+                    aa = getString(R.string.null_of_4);
                     break;
                 case 5:
-                    aa = "数";
+                    aa = getString(R.string.null_of_5);
                     break;
                 case 6:
-                    aa = "据";
+                    aa = getString(R.string.null_of_6);
                     break;
                 case 7:
-                    aa = "...";
+                    aa = getString(R.string.null_of_7);
                     break;
 
             }

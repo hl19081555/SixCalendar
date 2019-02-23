@@ -14,6 +14,23 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [APP_NAME: "@string/app_name"]
+        }
+        debug {
+            //为debug版本的包名添加.debug后缀
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [APP_NAME: "@string/app_name_debug"]
+        }
+    }
+
+    //配置自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (variant.buildType.name.equals('release')) {
+                outputFileName = "168日历_v${variant.versionName}.apk"
+            } else if (variant.buildType.name.equals('debug')) {
+                outputFileName = "168日历_v${variant.versionName}_${variant.name}.apk"
+            }
         }
     }
 }

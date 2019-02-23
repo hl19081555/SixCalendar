@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">168</string>
+    <string name="app_name_debug">168 Debug</string>
+
+    <string name="null_of_1">正</string>
+    <string name="null_of_2">在</string>
+    <string name="null_of_3">加</string>
+    <string name="null_of_4">载</string>
+    <string name="null_of_5">数</string>
+    <string name="null_of_6">据</string>
+    <string name="null_of_7">...</string>
 
     <string-array name="adBlockDiv">
         <item>top</item>
